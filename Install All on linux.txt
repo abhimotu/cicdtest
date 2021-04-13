@@ -1,0 +1,48 @@
+Install:-
+
+aws cli
+
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.30.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install
+
+Java
+
+sudo amazon-linux-extras install java-openjdk11
+
+
+Terraform
+
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+
+Python
+
+yum install python3 -y
+
+
+Jenkins
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+sudo yum upgrade
+
+sudo yum install jenkins java-1.8.0-openjdk-devel
+sudo systemctl daemon-reload
+sudo systemctl start jenkins
+
+
+Pip 
+yum install python-pip
+
+Boto3
+
+pip install boto3
+
+(13.234.210.38)
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
