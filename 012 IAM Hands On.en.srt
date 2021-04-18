@@ -1,0 +1,796 @@
+1
+00:00:00,404 --> 00:00:02,832
+<v Stephane>Okay, so now I am in the AWS console</v>
+
+2
+00:00:02,832 --> 00:00:04,091
+and that's the main page you see
+
+3
+00:00:04,091 --> 00:00:05,814
+when you start with AWS.
+
+4
+00:00:05,814 --> 00:00:08,421
+Now, in the area services, you can click on services
+
+5
+00:00:08,421 --> 00:00:11,526
+and see all of them and you will not learn all of them
+
+6
+00:00:11,526 --> 00:00:13,712
+'cause that's probably ages to learn all of them,
+
+7
+00:00:13,712 --> 00:00:15,350
+but what we'll learn is the most important ones
+
+8
+00:00:15,350 --> 00:00:17,104
+for the certification exam.
+
+9
+00:00:17,104 --> 00:00:19,434
+The first one we should get started with is IAM.
+
+10
+00:00:19,434 --> 00:00:20,948
+Now, you can also look in there
+
+11
+00:00:20,948 --> 00:00:22,881
+and find that IAM is right here,
+
+12
+00:00:22,881 --> 00:00:25,297
+but, as a developer, what I like to do is to be efficient,
+
+13
+00:00:25,297 --> 00:00:26,916
+so anytime I need to find a service,
+
+14
+00:00:26,916 --> 00:00:28,663
+I'll usually type it in the bar.
+
+15
+00:00:28,663 --> 00:00:30,537
+I'll type IAM, and it'll give you a link
+
+16
+00:00:30,537 --> 00:00:31,840
+straight to the service.
+
+17
+00:00:31,840 --> 00:00:34,019
+To me, I find this a little bit easier.
+
+18
+00:00:34,019 --> 00:00:35,842
+Now, when we start with IAM, as we see,
+
+19
+00:00:35,842 --> 00:00:37,788
+it's a global service, as I said. Okay?
+
+20
+00:00:37,788 --> 00:00:40,998
+The user is a roles; everything is credit globally.
+
+21
+00:00:40,998 --> 00:00:41,923
+Now, as you can see, we start
+
+22
+00:00:41,923 --> 00:00:44,241
+and we have almost nothing in our accounts.
+
+23
+00:00:44,241 --> 00:00:46,894
+We have zero users, zero groups. We have two roles,
+
+24
+00:00:46,894 --> 00:00:49,889
+but these are roles, basically, created by AWS for us,
+
+25
+00:00:49,889 --> 00:00:52,989
+and we get a security status that doesn't look good for now.
+
+26
+00:00:52,989 --> 00:00:55,213
+It says what you need to do to make sure
+
+27
+00:00:55,213 --> 00:00:57,052
+that your AWS account is secure.
+
+28
+00:00:57,052 --> 00:01:00,089
+So, this is exactly what we have to do right now.
+
+29
+00:01:00,089 --> 00:01:03,053
+The first one is delete your root access key.
+
+30
+00:01:03,053 --> 00:01:05,855
+The root access key provide access to your AWS accounts,
+
+31
+00:01:05,855 --> 00:01:08,169
+and you should never use them. Okay?
+
+32
+00:01:08,169 --> 00:01:09,339
+So, never ever use them.
+
+33
+00:01:09,339 --> 00:01:11,375
+Basically, we'll have to delete them,
+
+34
+00:01:11,375 --> 00:01:12,951
+and throw them away.
+
+35
+00:01:12,951 --> 00:01:16,146
+Now we can activate MFA for multi-factor authentication
+
+36
+00:01:16,146 --> 00:01:17,231
+on our root accounts.
+
+37
+00:01:17,231 --> 00:01:18,339
+I want to do this right now.
+
+38
+00:01:18,339 --> 00:01:20,875
+Basically, you click on manage MFA,
+
+39
+00:01:20,875 --> 00:01:22,825
+and, then, basically, you say, "Okay"
+
+40
+00:01:22,825 --> 00:01:24,341
+we're accessing the credentials page.
+
+41
+00:01:24,341 --> 00:01:26,425
+We say continue to credentials,
+
+42
+00:01:26,425 --> 00:01:30,165
+and we can enable MFA, and click on activate MFA.
+
+43
+00:01:30,165 --> 00:01:32,593
+Then, you can choose whether to it's a virtual or hardware.
+
+44
+00:01:32,593 --> 00:01:35,482
+If it's a virtual, like me, you can use an application,
+
+45
+00:01:35,482 --> 00:01:38,317
+such as, Google authenticator, for this.
+
+46
+00:01:38,317 --> 00:01:39,802
+I'll let you do it, but, basically,
+
+47
+00:01:39,802 --> 00:01:43,668
+you can download Google authenticator, and do this.
+
+48
+00:01:43,668 --> 00:01:45,765
+What you have to do when you open Google authenticator
+
+49
+00:01:45,765 --> 00:01:49,510
+is to scan this QR code, so you scan the barcode,
+
+50
+00:01:49,510 --> 00:01:51,670
+and, then, once the barcode is recognized,
+
+51
+00:01:51,670 --> 00:01:54,587
+it's going to give you two authentication code.
+
+52
+00:01:54,587 --> 00:01:56,087
+For me, 662
+
+53
+00:01:56,087 --> 00:01:56,978
+498,
+
+54
+00:01:56,978 --> 00:01:59,477
+and this will appear in your app directly,
+
+55
+00:01:59,477 --> 00:02:01,423
+and, then, you need to wait a little bit,
+
+56
+00:02:01,423 --> 00:02:03,867
+okay, until the next code arrives,
+
+57
+00:02:03,867 --> 00:02:06,144
+and then enter that code.
+
+58
+00:02:06,144 --> 00:02:08,227
+My second code is 327933,
+
+59
+00:02:09,858 --> 00:02:12,116
+and then activate my MFA, and great.
+
+60
+00:02:12,116 --> 00:02:14,892
+The MFA was successfully associated.
+
+61
+00:02:14,892 --> 00:02:17,061
+Basically, now, our root account is protected
+
+62
+00:02:17,061 --> 00:02:19,293
+by multi-factor authentication,
+
+63
+00:02:19,293 --> 00:02:22,245
+and I'm sure that only me, with my own personal device
+
+64
+00:02:22,245 --> 00:02:24,029
+can log in to AWS.
+
+65
+00:02:24,029 --> 00:02:25,713
+I feel much better about it, and, now,
+
+66
+00:02:25,713 --> 00:02:26,985
+we have a green tick.
+
+67
+00:02:26,985 --> 00:02:29,929
+Now, we need to create individual IAM users.
+
+68
+00:02:29,929 --> 00:02:32,483
+To create users, it's, basically, create our first users,
+
+69
+00:02:32,483 --> 00:02:35,443
+so click on manage users, and add a user,
+
+70
+00:02:35,443 --> 00:02:37,986
+and I'll create my own super user,
+
+71
+00:02:37,986 --> 00:02:41,682
+and I'll call it "Stephane". Stephane. That's me.
+
+72
+00:02:41,682 --> 00:02:43,677
+What type of access do I want to give myself?
+
+73
+00:02:43,677 --> 00:02:45,645
+Well, I want to give myself a programmatic access.
+
+74
+00:02:45,645 --> 00:02:47,389
+That's for sure, and, also,
+
+75
+00:02:47,389 --> 00:02:50,079
+the AWS management console access,
+
+76
+00:02:50,079 --> 00:02:51,728
+so that I can use a password
+
+77
+00:02:51,728 --> 00:02:53,794
+to sign into my management console.
+
+78
+00:02:53,794 --> 00:02:55,549
+Now we can choose an autogenerated password or
+
+79
+00:02:55,549 --> 00:02:58,231
+a custom password. We'll just keep it autogenerated.
+
+80
+00:02:58,231 --> 00:02:59,974
+Then, basically, when I first log in,
+
+81
+00:02:59,974 --> 00:03:02,782
+it's going to require a password resets.
+
+82
+00:03:02,782 --> 00:03:04,475
+Then, I click on next permissions,
+
+83
+00:03:04,475 --> 00:03:07,744
+and, basically, I say whatever I want and stuff.
+
+84
+00:03:07,744 --> 00:03:09,844
+We can add a user to a group or
+
+85
+00:03:09,844 --> 00:03:13,159
+copy permission from an existing user or attach policies.
+
+86
+00:03:13,159 --> 00:03:15,245
+For me, I'll just attach directly policies,
+
+87
+00:03:15,245 --> 00:03:16,572
+just to be quick,
+
+88
+00:03:16,572 --> 00:03:19,437
+and I'll give myself an administrator access.
+
+89
+00:03:19,437 --> 00:03:22,783
+Basically, I want to use the accounts to do my course.
+
+90
+00:03:22,783 --> 00:03:25,218
+I'll give myself administrator access,
+
+91
+00:03:25,218 --> 00:03:28,174
+and, basically, if you look at the permission boundary,
+
+92
+00:03:28,174 --> 00:03:30,542
+you can just create it without one,
+
+93
+00:03:30,542 --> 00:03:31,774
+because this is an advanced feature,
+
+94
+00:03:31,774 --> 00:03:33,708
+and we don't need it right now.
+
+95
+00:03:33,708 --> 00:03:36,217
+We click on next to review, and, basically,
+
+96
+00:03:36,217 --> 00:03:38,739
+it says, "Okay", here is me. That's Stephane,
+
+97
+00:03:38,739 --> 00:03:41,312
+and the permissions I have is, I have administrator access,
+
+98
+00:03:41,312 --> 00:03:42,362
+which is great,
+
+99
+00:03:42,362 --> 00:03:44,111
+and I have it so I can change my own password,
+
+100
+00:03:44,111 --> 00:03:45,732
+which is great as well, right?
+
+101
+00:03:45,732 --> 00:03:48,316
+I'll go ahead and click on create,
+
+102
+00:03:48,316 --> 00:03:51,394
+and, all of a sudden, my user is created.
+
+103
+00:03:51,394 --> 00:03:54,165
+Basically, I successfully generated a user,
+
+104
+00:03:54,165 --> 00:03:57,320
+and I can view and download the security credentials
+
+105
+00:03:57,320 --> 00:03:59,085
+for that user if I wanted to,
+
+106
+00:03:59,085 --> 00:04:00,826
+so I click on download .csv, and this is something
+
+107
+00:04:00,826 --> 00:04:03,804
+I'm not showing you, and you should not see, okay?
+
+108
+00:04:03,804 --> 00:04:05,861
+Basically, this guarantees that I have a user,
+
+109
+00:04:05,861 --> 00:04:07,391
+and, then, once that page is gone,
+
+110
+00:04:07,391 --> 00:04:10,355
+I won't be able to see it again. Okay?
+
+111
+00:04:10,355 --> 00:04:13,757
+I'll close this page, and now we're good.
+
+112
+00:04:13,757 --> 00:04:16,675
+We have Stephane as a user, and what I'll do is,
+
+113
+00:04:16,675 --> 00:04:20,594
+I will re-log in to my page very soon as this user.
+
+114
+00:04:20,594 --> 00:04:21,960
+Now, if we go back to the dashboard,
+
+115
+00:04:21,960 --> 00:04:24,023
+we can also have groups, okay?
+
+116
+00:04:24,023 --> 00:04:25,612
+What we have as groups is, basically,
+
+117
+00:04:25,612 --> 00:04:27,115
+group the users together, such as,
+
+118
+00:04:27,115 --> 00:04:30,617
+we can know and group permissions and save a bit of time.
+
+119
+00:04:30,617 --> 00:04:32,712
+Manage a group, create a new group,
+
+120
+00:04:32,712 --> 00:04:36,200
+and, for this, I'll call new group "admin", okay?
+
+121
+00:04:36,200 --> 00:04:37,668
+I'll click on next step,
+
+122
+00:04:37,668 --> 00:04:40,796
+and I'll give administrator access to that group.
+
+123
+00:04:40,796 --> 00:04:43,135
+Click on next step, and, then, create the group.
+
+124
+00:04:43,135 --> 00:04:44,875
+Very simple, I create a group called admin,
+
+125
+00:04:44,875 --> 00:04:45,819
+but you can create a group name whatever,
+
+126
+00:04:45,819 --> 00:04:49,496
+developers, whatever, and create the group.
+
+127
+00:04:49,496 --> 00:04:52,184
+Now, the group admin, basically, has it's own permissions,
+
+128
+00:04:52,184 --> 00:04:54,452
+and the permission's administrator access.
+
+129
+00:04:54,452 --> 00:04:57,717
+What I want to do is add my users to my group.
+
+130
+00:04:57,717 --> 00:05:00,336
+This is myself. I'll add Stephane to this group.
+
+131
+00:05:00,336 --> 00:05:02,752
+Now we can see that Stephane is part of the administrators,
+
+132
+00:05:02,752 --> 00:05:06,384
+and, as such, you will inherit the permission of that group.
+
+133
+00:05:06,384 --> 00:05:09,265
+What I can do is, I can go back to the users now.
+
+134
+00:05:09,265 --> 00:05:12,021
+Go to Stephane, and what I can do directly,
+
+135
+00:05:12,021 --> 00:05:14,704
+is detach these permissions,
+
+136
+00:05:14,704 --> 00:05:16,073
+because they are attached directly,
+
+137
+00:05:16,073 --> 00:05:17,892
+and it's not very manageable,
+
+138
+00:05:17,892 --> 00:05:21,068
+so I can detach this administrator access,
+
+139
+00:05:21,068 --> 00:05:23,959
+which was attached through the group, okay?
+
+140
+00:05:23,959 --> 00:05:25,759
+Now, we have a much better set up,
+
+141
+00:05:25,759 --> 00:05:28,276
+because my administrator access has been provided
+
+142
+00:05:28,276 --> 00:05:29,760
+for the group.
+
+143
+00:05:29,760 --> 00:05:31,976
+This all looks great, and then, finally,
+
+144
+00:05:31,976 --> 00:05:35,154
+we can apply an IAM password policy.
+
+145
+00:05:35,154 --> 00:05:37,263
+Now, an IAM password policy is, basically,
+
+146
+00:05:37,263 --> 00:05:39,362
+to guarantee that IAM users, such as, myself
+
+147
+00:05:39,362 --> 00:05:40,635
+will create strong password,
+
+148
+00:05:40,635 --> 00:05:42,370
+and these password will change often,
+
+149
+00:05:42,370 --> 00:05:45,438
+because I don't want passwords to hang around for a year.
+
+150
+00:05:45,438 --> 00:05:46,788
+If I click on password policy,
+
+151
+00:05:46,788 --> 00:05:49,598
+you can see all the requirements that there is,
+
+152
+00:05:49,598 --> 00:05:52,197
+but, basically, you wanna choose a minimum length.
+
+153
+00:05:52,197 --> 00:05:54,405
+Allow users to change their own password,
+
+154
+00:05:54,405 --> 00:05:58,752
+and, maybe, I wanna expire passwords after 90 days, okay?
+
+155
+00:05:58,752 --> 00:06:00,012
+That sounds about right,
+
+156
+00:06:00,012 --> 00:06:02,401
+but you can use whatever requirement you want.
+
+157
+00:06:02,401 --> 00:06:04,911
+I'll apply the password policy,
+
+158
+00:06:04,911 --> 00:06:06,234
+and we should be good.
+
+159
+00:06:06,234 --> 00:06:09,208
+Now, all here is green, and, as I said,
+
+160
+00:06:09,208 --> 00:06:13,296
+I do not agree for anyone to use the root accounts,
+
+161
+00:06:13,296 --> 00:06:15,960
+so what we'll do is go to customize,
+
+162
+00:06:15,960 --> 00:06:17,652
+and we create an account, yes,
+
+163
+00:06:17,652 --> 00:06:22,652
+I'll call it "dataacumulus-courses", and I'll set yes,
+
+164
+00:06:22,691 --> 00:06:25,179
+create, and, basically, now,
+
+165
+00:06:25,179 --> 00:06:28,260
+the IAM user sign-in link is right here.
+
+166
+00:06:28,260 --> 00:06:32,517
+This link is what I will use to sign in to my AWS console.
+
+167
+00:06:32,517 --> 00:06:35,970
+I'll go and tab and click on console,
+
+168
+00:06:35,970 --> 00:06:38,329
+and, right here, I have the IAM user name,
+
+169
+00:06:38,329 --> 00:06:39,720
+which is gonna be Stephane,
+
+170
+00:06:39,720 --> 00:06:41,229
+and I need to set the password,
+
+171
+00:06:41,229 --> 00:06:42,901
+and the password is the one that you got
+
+172
+00:06:42,901 --> 00:06:45,674
+from the credentials; that .csv file.
+
+173
+00:06:45,674 --> 00:06:47,085
+What I'll do is that, basically,
+
+174
+00:06:47,085 --> 00:06:49,292
+I'm going to my credentials .csv file,
+
+175
+00:06:49,292 --> 00:06:52,027
+and you can't see it. I copy and paste the password,
+
+176
+00:06:52,027 --> 00:06:53,763
+and sign in. Now that I'm sign in,
+
+177
+00:06:53,763 --> 00:06:57,622
+as you can see, I must change my password to continue.
+
+178
+00:06:57,622 --> 00:07:00,931
+I paste my old password, and I'll just type a new password
+
+179
+00:07:00,931 --> 00:07:02,828
+that I'll generate and fill using my password manager,
+
+180
+00:07:02,828 --> 00:07:03,997
+but you can type whatever you want,
+
+181
+00:07:03,997 --> 00:07:05,635
+just make sure it's secure,
+
+182
+00:07:05,635 --> 00:07:09,383
+and, then, I'll confirm the password change.
+
+183
+00:07:09,383 --> 00:07:11,194
+Now, as you can see, on the top right,
+
+184
+00:07:11,194 --> 00:07:13,730
+I am logged in as the IAM user, Stephane
+
+185
+00:07:13,730 --> 00:07:15,871
+in my account, dataacumulus-courses.
+
+186
+00:07:15,871 --> 00:07:17,825
+Once you have IAM user, this is, basically,
+
+187
+00:07:17,825 --> 00:07:19,911
+saying, "Hey. I'm not using the root account anymore.
+
+188
+00:07:19,911 --> 00:07:22,136
+I'm using this user that I created from before",
+
+189
+00:07:22,136 --> 00:07:24,362
+and this is a much better thing to do.
+
+190
+00:07:24,362 --> 00:07:26,637
+If I go back to IAM, as you can see,
+
+191
+00:07:26,637 --> 00:07:29,018
+everything looks complete. Everything looks good,
+
+192
+00:07:29,018 --> 00:07:31,515
+and I'm created and I have all the users
+
+193
+00:07:31,515 --> 00:07:32,916
+and rights that I want.
+
+194
+00:07:32,916 --> 00:07:34,909
+That's it for the set up, just remember,
+
+195
+00:07:34,909 --> 00:07:36,243
+really, really, really important
+
+196
+00:07:36,243 --> 00:07:39,162
+for you to set up a user that has admin access
+
+197
+00:07:39,162 --> 00:07:42,030
+and use that user instead of your root accounts.
+
+198
+00:07:42,030 --> 00:07:44,569
+That's about it, and I will see you in the next lecture
+
+199
+00:07:44,569 --> 00:07:46,287
+for some much more funner stuff.
+
