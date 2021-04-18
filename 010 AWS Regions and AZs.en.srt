@@ -1,0 +1,284 @@
+1
+00:00:00,720 --> 00:00:02,150
+<v Instructor>When we get started with Amazon,</v>
+
+2
+00:00:02,150 --> 00:00:05,246
+we have to talk about AWS regions.
+
+3
+00:00:05,246 --> 00:00:07,690
+AWS has regions all around the world,
+
+4
+00:00:07,690 --> 00:00:09,030
+so you may have heard something like this
+
+5
+00:00:09,030 --> 00:00:10,870
+called us-east-1, or if you take, for example,
+
+6
+00:00:10,870 --> 00:00:13,810
+the Sydney region is called ap-southeast-2.
+
+7
+00:00:13,810 --> 00:00:15,800
+AWS has just a bunch of regions around the world,
+
+8
+00:00:15,800 --> 00:00:17,190
+and region is what you think it is.
+
+9
+00:00:17,190 --> 00:00:19,640
+It is, basically, somewhere in the world.
+
+10
+00:00:19,640 --> 00:00:22,270
+Each region will have Availability Zone.
+
+11
+00:00:22,270 --> 00:00:24,910
+Now, Availability Zone, we know and recognize them
+
+12
+00:00:24,910 --> 00:00:26,380
+because they end up with a letter,
+
+13
+00:00:26,380 --> 00:00:31,380
+so example, us-east-1a or us-east-1b, and so on.
+
+14
+00:00:31,480 --> 00:00:34,500
+The letters are A, B, C, D, E, and F,
+
+15
+00:00:34,500 --> 00:00:36,670
+can go up to six AZs so far.
+
+16
+00:00:36,670 --> 00:00:38,870
+So AZ is another word for Availability Zone,
+
+17
+00:00:38,870 --> 00:00:40,520
+and they're basically representing
+
+18
+00:00:40,520 --> 00:00:43,044
+physical data centers in a region,
+
+19
+00:00:43,044 --> 00:00:46,591
+so think like a huge data center somewhere in the world.
+
+20
+00:00:46,591 --> 00:00:49,220
+All these Availability Zones, they're separate
+
+21
+00:00:49,220 --> 00:00:51,140
+from one another because they're
+
+22
+00:00:51,140 --> 00:00:53,220
+want to be separate from disasters,
+
+23
+00:00:53,220 --> 00:00:56,450
+so this is why we have multiple AZ in one region.
+
+24
+00:00:56,450 --> 00:00:59,630
+Each AWS region is basically built around
+
+25
+00:00:59,630 --> 00:01:02,870
+a minimum of three data center or Availability Zones,
+
+26
+00:01:02,870 --> 00:01:06,070
+and that's the basis of how Amazon works.
+
+27
+00:01:06,070 --> 00:01:11,070
+Each AWS Console now are region scoped, except IAM and S3.
+
+28
+00:01:11,880 --> 00:01:13,670
+Basically, when we go into the AWS UI,
+
+29
+00:01:13,670 --> 00:01:17,300
+as you'll see in a second, you will be scoped to a region,
+
+30
+00:01:17,300 --> 00:01:18,300
+and what that means is that when you
+
+31
+00:01:18,300 --> 00:01:20,520
+do changes or when you perform actions,
+
+32
+00:01:20,520 --> 00:01:23,040
+you will perform this action in a specific region.
+
+33
+00:01:23,040 --> 00:01:26,660
+Now the AZ themselves are a subset of the region,
+
+34
+00:01:26,660 --> 00:01:28,690
+but they're not shown in the console.
+
+35
+00:01:28,690 --> 00:01:30,640
+So if we go to the console right here,
+
+36
+00:01:30,640 --> 00:01:33,200
+we can see that right now, I am in the Paris region,
+
+37
+00:01:33,200 --> 00:01:35,460
+but if I click on the top right, I can see a dropdown
+
+38
+00:01:35,460 --> 00:01:38,100
+of all the regions for AWS that exist.
+
+39
+00:01:38,100 --> 00:01:41,620
+If I take a service, such as, for example, EC2,
+
+40
+00:01:41,620 --> 00:01:43,730
+we can see that when the EC2 pages load,
+
+41
+00:01:43,730 --> 00:01:46,180
+we can see that the region is still Paris, okay?
+
+42
+00:01:46,180 --> 00:01:48,340
+Whereas, if I go back to the console
+
+43
+00:01:48,340 --> 00:01:52,240
+and type in the center bar, I type IAM and click on IAM,
+
+44
+00:01:52,240 --> 00:01:54,680
+now I can see that IAM is a global service,
+
+45
+00:01:54,680 --> 00:01:55,980
+and in the top right it says global,
+
+46
+00:01:55,980 --> 00:01:58,800
+and then it says IAM does not require region selection.
+
+47
+00:01:58,800 --> 00:02:01,260
+So there's a few services that don't require a region,
+
+48
+00:02:01,260 --> 00:02:04,238
+there's a few services that do require a region.
+
+49
+00:02:04,238 --> 00:02:06,710
+The best to work with when you start with Amazon
+
+50
+00:02:06,710 --> 00:02:08,630
+is to work in the region closest to you.
+
+51
+00:02:08,630 --> 00:02:11,680
+You can go to the Global Cloud Infrastructure
+
+52
+00:02:11,680 --> 00:02:14,690
+About AWS page, just Google Global Cloud Infrastructure,
+
+53
+00:02:14,690 --> 00:02:16,860
+and it will show you exactly on the map
+
+54
+00:02:16,860 --> 00:02:18,810
+where are all these regions and
+
+55
+00:02:18,810 --> 00:02:21,990
+how many AZs they have within them.
+
+56
+00:02:21,990 --> 00:02:25,230
+So basically we have the EU West region right here,
+
+57
+00:02:25,230 --> 00:02:28,620
+we have the US East, US West right here,
+
+58
+00:02:28,620 --> 00:02:30,460
+so there's a bunch of regions that you can see,
+
+59
+00:02:30,460 --> 00:02:32,310
+and within each region, they tell you
+
+60
+00:02:32,310 --> 00:02:33,920
+the number of AZs they have.
+
+61
+00:02:33,920 --> 00:02:36,210
+Now, for this tutorial, I want you to take a region
+
+62
+00:02:36,210 --> 00:02:39,300
+with at least three AZ, for this whole course,
+
+63
+00:02:39,300 --> 00:02:42,140
+because it really is the basis to me of how AWS works,
+
+64
+00:02:42,140 --> 00:02:44,630
+and that's pretty much the standard everywhere, so when you
+
+65
+00:02:44,630 --> 00:02:46,780
+do this tutorial, choose a region that is close to you.
+
+66
+00:02:46,780 --> 00:02:49,960
+If you live in Brazil, take a region in South America.
+
+67
+00:02:49,960 --> 00:02:52,280
+If you live near China, take the region
+
+68
+00:02:52,280 --> 00:02:54,670
+that is closest to you; if you live in the US,
+
+69
+00:02:54,670 --> 00:02:57,100
+do not choose Australia or Europe as your region.
+
+70
+00:02:57,100 --> 00:02:59,810
+That's just the basics, region and AZ,
+
+71
+00:02:59,810 --> 00:03:02,460
+and now we're ready to get started with Amazon Cloud.
+

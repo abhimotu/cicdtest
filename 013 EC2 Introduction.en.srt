@@ -1,0 +1,1028 @@
+1
+00:00:00,210 --> 00:00:02,443
+Okay, see we are getting into the first fun
+
+2
+00:00:02,443 --> 00:00:04,769
+service of AWS which is Amazon EC2.
+
+3
+00:00:04,769 --> 00:00:07,041
+So when you start with AWS you kinda want
+
+4
+00:00:07,041 --> 00:00:08,477
+to start over there because
+
+5
+00:00:08,477 --> 00:00:10,051
+that is kind of the basis of AWS.
+
+6
+00:00:10,051 --> 00:00:12,901
+That's how Amazon used to work for a very long time.
+
+7
+00:00:12,901 --> 00:00:14,469
+Now it's no more Serverless as we'll
+
+8
+00:00:14,469 --> 00:00:15,685
+see in this course as well.
+
+9
+00:00:15,685 --> 00:00:18,023
+But EC2, you have to start there.
+
+10
+00:00:18,023 --> 00:00:21,337
+So, it's one of the most popular of AWS server accesses
+
+11
+00:00:21,337 --> 00:00:23,544
+and basically it consists of the capability of
+
+12
+00:00:23,544 --> 00:00:25,689
+launching virtual machines in the cloud,
+
+13
+00:00:25,689 --> 00:00:28,685
+okay, but also storing data on virtual drives,
+
+14
+00:00:28,685 --> 00:00:32,045
+that's called EBS, distributing load across machines,
+
+15
+00:00:32,045 --> 00:00:34,016
+that's called ELB, or load balancing,
+
+16
+00:00:34,016 --> 00:00:37,830
+and scaling servers using an auto-scaling group, or ASG.
+
+17
+00:00:37,830 --> 00:00:40,826
+So it uncompasses a lot of different services.
+
+18
+00:00:40,826 --> 00:00:43,707
+Knowing EC2 for me, it's fundamental to understanding
+
+19
+00:00:43,707 --> 00:00:44,806
+how the Cloud works.
+
+20
+00:00:44,806 --> 00:00:46,201
+This is where the revolution started,
+
+21
+00:00:46,201 --> 00:00:48,598
+it's the ability to just start a machine right away,
+
+22
+00:00:48,598 --> 00:00:51,655
+and we need to start there to understand how Serverless
+
+23
+00:00:51,655 --> 00:00:54,166
+later on makes a difference.
+
+24
+00:00:54,166 --> 00:00:55,924
+So, in this first hands-on,
+
+25
+00:00:55,924 --> 00:00:59,186
+I want to launch an EC2 Instance running Linux.
+
+26
+00:00:59,186 --> 00:01:01,035
+And so we'll be launching our first server
+
+27
+00:01:01,035 --> 00:01:02,605
+and we'll use the AWS Console
+
+28
+00:01:02,605 --> 00:01:04,990
+and this will give us a high level overview
+
+29
+00:01:04,990 --> 00:01:07,445
+of the various parameters that we'll have in this course,
+
+30
+00:01:07,445 --> 00:01:09,090
+and for the EC2 launching.
+
+31
+00:01:09,090 --> 00:01:11,639
+But, we will go over them one-by-one
+
+32
+00:01:11,639 --> 00:01:13,952
+in much great details in the next lecture.
+
+33
+00:01:13,952 --> 00:01:17,301
+We'll learn how to start, stop, and terminate our instances.
+
+34
+00:01:17,301 --> 00:01:18,664
+Okay, that's super important.
+
+35
+00:01:18,664 --> 00:01:21,430
+Just to get a feeling of how things work.
+
+36
+00:01:21,430 --> 00:01:23,947
+So without further ado, lets get started.
+
+37
+00:01:23,947 --> 00:01:25,910
+Okay, so I am in my AWS Console,
+
+38
+00:01:25,910 --> 00:01:27,950
+and all the EC2 link is right here.
+
+39
+00:01:27,950 --> 00:01:31,220
+I want you to get used to writing EC2 in the search bar
+
+40
+00:01:31,220 --> 00:01:33,280
+and just getting the first link.
+
+41
+00:01:33,280 --> 00:01:36,027
+So, first make sure that you are in the region
+
+42
+00:01:36,027 --> 00:01:38,350
+that's close to you, okay, for me it's EU Paris.
+
+43
+00:01:38,350 --> 00:01:40,180
+But based on where you are in the world,
+
+44
+00:01:40,180 --> 00:01:42,840
+please choose the region that makes the most sense
+
+45
+00:01:42,840 --> 00:01:44,820
+for you to use EC2 in.
+
+46
+00:01:44,820 --> 00:01:47,718
+So we are in the EC2 Console, and as you can see,
+
+47
+00:01:47,718 --> 00:01:49,465
+pretty much nothing's happening,
+
+48
+00:01:49,465 --> 00:01:50,890
+we have zero running instances,
+
+49
+00:01:50,890 --> 00:01:53,457
+a bunch of things in one security group.
+
+50
+00:01:53,457 --> 00:01:55,713
+So basically, this is the basis of things,
+
+51
+00:01:55,713 --> 00:01:58,710
+but the first thing we want to do is to launch an Instance.
+
+52
+00:01:58,710 --> 00:02:00,116
+So there's this big blue button right here
+
+53
+00:02:00,116 --> 00:02:01,696
+to launch an instance.
+
+54
+00:02:01,696 --> 00:02:04,116
+Now, when I click on it, the first thing I land on
+
+55
+00:02:04,116 --> 00:02:06,776
+is creating an, choosing an AMI.
+
+56
+00:02:06,776 --> 00:02:09,713
+So AMI stands for Amazon Machine Image.
+
+57
+00:02:09,713 --> 00:02:12,217
+And this is basically the software and the operating system
+
+58
+00:02:12,217 --> 00:02:14,686
+that will be launched on that server.
+
+59
+00:02:14,686 --> 00:02:17,907
+Now, there is a bunch of distribution that you may recognize
+
+60
+00:02:17,907 --> 00:02:21,996
+such as Ubuntu or Redhats or Microsoft Windows,
+
+61
+00:02:21,996 --> 00:02:23,016
+et cetera, et cetera.
+
+62
+00:02:23,016 --> 00:02:24,766
+In this course it's for the certification.
+
+63
+00:02:24,766 --> 00:02:28,564
+It's much better if we go using the Amazon Linux AMI
+
+64
+00:02:28,564 --> 00:02:31,506
+because they come with a lot of Amazon specific stuff.
+
+65
+00:02:31,506 --> 00:02:34,696
+Especially recently, Amazon Linux 2 came out,
+
+66
+00:02:34,696 --> 00:02:37,886
+and to me, it's kind of what you have to use today.
+
+67
+00:02:37,886 --> 00:02:41,779
+Because it's for how Amazon sees you using Linux.
+
+68
+00:02:41,779 --> 00:02:43,854
+And so we'll use Amazon Linux too.
+
+69
+00:02:43,854 --> 00:02:45,751
+And the thing is, I'm telling you this because
+
+70
+00:02:45,751 --> 00:02:47,487
+if you use Amazon Linux for this tutorial,
+
+71
+00:02:47,487 --> 00:02:49,906
+the commands are going to be slightly different,
+
+72
+00:02:49,906 --> 00:02:53,261
+and because I want you to use the exact same setup as me,
+
+73
+00:02:53,261 --> 00:02:54,407
+the exact same tooling,
+
+74
+00:02:54,407 --> 00:02:57,034
+I would like you to choose Amazon Linux too.
+
+75
+00:02:57,034 --> 00:02:59,196
+Now if you notice something on the left-hand side,
+
+76
+00:02:59,196 --> 00:03:01,068
+it says Free Tier Eligible.
+
+77
+00:03:01,068 --> 00:03:03,082
+So yes, we are going to try to remain
+
+78
+00:03:03,082 --> 00:03:04,771
+all the way in the free tier
+
+79
+00:03:04,771 --> 00:03:06,756
+when you start your A list accounts.
+
+80
+00:03:06,756 --> 00:03:08,236
+So when you start working with Amazon,
+
+81
+00:03:08,236 --> 00:03:09,731
+they give you a bunch of free stuff
+
+82
+00:03:09,731 --> 00:03:11,848
+to try out their services, such as we are doing right now,
+
+83
+00:03:11,848 --> 00:03:13,784
+and it's much better for me and for you
+
+84
+00:03:13,784 --> 00:03:15,426
+if we manage to remain free.
+
+85
+00:03:15,426 --> 00:03:17,381
+So we'll choose something that is Free Tier eligible.
+
+86
+00:03:17,381 --> 00:03:19,894
+We'll choose Amazon Linux 2.
+
+87
+00:03:19,894 --> 00:03:21,467
+We'll select the AMI,
+
+88
+00:03:21,467 --> 00:03:24,526
+and now we have to choose a type of machine we have.
+
+89
+00:03:24,526 --> 00:03:27,531
+So when you select an EC2 machine, you can select the type.
+
+90
+00:03:27,531 --> 00:03:28,746
+And basically the type is saying,
+
+91
+00:03:28,746 --> 00:03:31,174
+"how powerful you want your machine to be?
+
+92
+00:03:31,174 --> 00:03:33,915
+How many VCP views do you want it to have?
+
+93
+00:03:33,915 --> 00:03:35,821
+And how much memory do you want it to have?"
+
+94
+00:03:35,821 --> 00:03:38,491
+If you scroll down this page you can see there is a lot
+
+95
+00:03:38,491 --> 00:03:41,058
+of different machine types, okay, a lot of them,
+
+96
+00:03:41,058 --> 00:03:44,101
+but only one of them is free tier eligible.
+
+97
+00:03:44,101 --> 00:03:45,757
+So we'll just go for t2.micro.
+
+98
+00:03:45,757 --> 00:03:47,841
+In the next lecture, we'll learn about the differences
+
+99
+00:03:47,841 --> 00:03:49,441
+and why there are so many names,
+
+100
+00:03:49,441 --> 00:03:51,828
+but for now, lets just go and use t2.micro.
+
+101
+00:03:51,828 --> 00:03:54,283
+Now I could go ahead and click on review and launch,
+
+102
+00:03:54,283 --> 00:03:56,021
+it's the big blue button and it's quite tempting,
+
+103
+00:03:56,021 --> 00:03:59,191
+but I will just do Next Configure Instance Detail.
+
+104
+00:03:59,191 --> 00:04:00,551
+That's because I want to show you
+
+105
+00:04:00,551 --> 00:04:02,930
+all the parameters that are available for you.
+
+106
+00:04:02,930 --> 00:04:06,182
+So now, we're getting into a lot of parameters,
+
+107
+00:04:06,182 --> 00:04:08,537
+and you may be overwhelmed right now, but don't worry,
+
+108
+00:04:08,537 --> 00:04:11,712
+overtime, over the lessons, and the next lectures and so on,
+
+109
+00:04:11,712 --> 00:04:14,128
+you will become much more familiar with them.
+
+110
+00:04:14,128 --> 00:04:16,782
+Number of Instances we want to launch is 1.
+
+111
+00:04:16,782 --> 00:04:18,170
+That sounds about right.
+
+112
+00:04:18,170 --> 00:04:20,250
+I will not Request Spot Instances,
+
+113
+00:04:20,250 --> 00:04:21,931
+we want an on-demand instance,
+
+114
+00:04:21,931 --> 00:04:23,754
+so we'll not check this box.
+
+115
+00:04:23,754 --> 00:04:26,410
+Now the Network, is around VPC and Subnet.
+
+116
+00:04:26,410 --> 00:04:28,390
+Now, when you create the name of this accounts
+
+117
+00:04:28,390 --> 00:04:30,540
+it comes with something called a default VPC.
+
+118
+00:04:30,540 --> 00:04:32,817
+So we'll just use the default VPC right here,
+
+119
+00:04:32,817 --> 00:04:34,530
+and the subnet is basically saying
+
+120
+00:04:34,530 --> 00:04:36,971
+in which AZ, availability zone,
+
+121
+00:04:36,971 --> 00:04:38,824
+do you want your Instance to be?
+
+122
+00:04:38,824 --> 00:04:41,060
+So, I'll say no preference because I have no preference.
+
+123
+00:04:41,060 --> 00:04:42,780
+But as you can see, what from before,
+
+124
+00:04:42,780 --> 00:04:44,359
+when I talked about AZ,
+
+125
+00:04:44,359 --> 00:04:47,030
+we can see now we have eu-west-3a, b, and c,
+
+126
+00:04:47,030 --> 00:04:48,768
+and we can choose to launch our Instance
+
+127
+00:04:48,768 --> 00:04:51,195
+in one of these data centers, or AZ.
+
+128
+00:04:51,195 --> 00:04:53,713
+Same wise, I will auto-assign a Public IP,
+
+129
+00:04:53,713 --> 00:04:56,227
+and I will just use the subnet setting.
+
+130
+00:04:56,227 --> 00:04:57,884
+Now we don't need a IAM role,
+
+131
+00:04:57,884 --> 00:04:59,926
+we'll see IAM roles in great depth in the next section.
+
+132
+00:04:59,926 --> 00:05:01,299
+The shut down behaviors,
+
+133
+00:05:01,299 --> 00:05:04,513
+that if I shut down a machine it will stop, and so on.
+
+134
+00:05:04,513 --> 00:05:05,951
+All of this looks good.
+
+135
+00:05:05,951 --> 00:05:07,768
+All of this are pretty much advanced parameters
+
+136
+00:05:07,768 --> 00:05:09,328
+that we'll see in the later on.
+
+137
+00:05:09,328 --> 00:05:11,548
+Then there is admin's details and spin code user data,
+
+138
+00:05:11,548 --> 00:05:13,840
+and I have a lecture dedicated to this.
+
+139
+00:05:13,840 --> 00:05:17,054
+Now click on storage, basically when you start an Instance
+
+140
+00:05:17,054 --> 00:05:18,972
+okay, right now, we started with pretty much
+
+141
+00:05:18,972 --> 00:05:20,491
+all the default settings.
+
+142
+00:05:20,491 --> 00:05:21,608
+When you start a Instance,
+
+143
+00:05:21,608 --> 00:05:23,842
+it has to have it's operating system somewhere,
+
+144
+00:05:23,842 --> 00:05:27,111
+and that's a disc, and basically that's called storage.
+
+145
+00:05:27,111 --> 00:05:28,761
+So, storage is EBS volume.
+
+146
+00:05:28,761 --> 00:05:30,953
+And currently, we just want the root storage,
+
+147
+00:05:30,953 --> 00:05:33,409
+so that's where our operating system is going to run.
+
+148
+00:05:33,409 --> 00:05:35,821
+And we'll leave it at /dev/xvda.
+
+149
+00:05:35,821 --> 00:05:38,058
+We'll leave it at eight gigabyte of space,
+
+150
+00:05:38,058 --> 00:05:40,051
+and we'll leave it as SSD.
+
+151
+00:05:40,051 --> 00:05:41,761
+All of this is very important.
+
+152
+00:05:41,761 --> 00:05:46,506
+And as you can see, by default, when this is terminated,
+
+153
+00:05:46,506 --> 00:05:49,023
+so is the root volume because this is ticked,
+
+154
+00:05:49,023 --> 00:05:50,521
+and I'll leave it like this.
+
+155
+00:05:50,521 --> 00:05:52,261
+Finally, you'll see it's not encrypted.
+
+156
+00:05:52,261 --> 00:05:54,751
+We'll talk about EBS encryption later on.
+
+157
+00:05:54,751 --> 00:05:57,531
+Now when you launch an instance, we can add tags.
+
+158
+00:05:57,531 --> 00:05:59,945
+And Tags are basically key value pairs,
+
+159
+00:05:59,945 --> 00:06:01,927
+which allow you to just identify that
+
+160
+00:06:01,927 --> 00:06:03,666
+Instance and classify it.
+
+161
+00:06:03,666 --> 00:06:05,401
+For example, the first type that is going
+
+162
+00:06:05,401 --> 00:06:06,993
+to be very important is the name tag.
+
+163
+00:06:06,993 --> 00:06:09,870
+And, we'll say, My First Instance, okay.
+
+164
+00:06:09,870 --> 00:06:12,184
+And, you can have it whatever you want.
+
+165
+00:06:12,184 --> 00:06:14,940
+You can add another tag and say, you know,
+
+166
+00:06:14,940 --> 00:06:18,523
+another tag, another key, and then another value.
+
+167
+00:06:18,523 --> 00:06:21,183
+It's whatever you want, okay, you're free to have
+
+168
+00:06:21,183 --> 00:06:22,573
+tags of whatever you want.
+
+169
+00:06:22,573 --> 00:06:24,173
+But the name tag is going to be quite important
+
+170
+00:06:24,173 --> 00:06:26,123
+because it's going to show in the UI.
+
+171
+00:06:26,123 --> 00:06:27,983
+Now security group wise,
+
+172
+00:06:27,983 --> 00:06:30,076
+this is basically going to be a firewall
+
+173
+00:06:30,076 --> 00:06:32,283
+around your Instance, okay.
+
+174
+00:06:32,283 --> 00:06:34,430
+And so, when we get started with our Instance,
+
+175
+00:06:34,430 --> 00:06:36,167
+the first thing we want to under Linux
+
+176
+00:06:36,167 --> 00:06:38,663
+is make sure we can SSH into it.
+
+177
+00:06:38,663 --> 00:06:41,363
+So there's an SSH rule, and then you can define a port,
+
+178
+00:06:41,363 --> 00:06:43,574
+and you can define a source.
+
+179
+00:06:43,574 --> 00:06:46,973
+Currently, I will go and create a new security group,
+
+180
+00:06:46,973 --> 00:06:49,823
+okay, which, um, in terms of name I'll just
+
+181
+00:06:49,823 --> 00:06:53,073
+call it, My First Security Group, okay.
+
+182
+00:06:54,075 --> 00:06:55,495
+And in the description I'll say,
+
+183
+00:06:55,495 --> 00:06:58,412
+created with my first EC2 instance.
+
+184
+00:07:00,308 --> 00:07:04,826
+And I will allow SSH, on Port 22, and the source currently,
+
+185
+00:07:04,826 --> 00:07:07,376
+I'll just leave it as 0.0.0.0/0,
+
+186
+00:07:07,376 --> 00:07:09,576
+it's got quite a bit criterias you could setup as my IP
+
+187
+00:07:09,576 --> 00:07:11,646
+if just you wanted yo use that port,
+
+188
+00:07:11,646 --> 00:07:13,366
+but to make things super simple right now and not
+
+189
+00:07:13,366 --> 00:07:16,976
+overload you, we will set it as Custom 0.0.0.0/0,
+
+190
+00:07:16,976 --> 00:07:18,574
+which means, any IP.
+
+191
+00:07:18,574 --> 00:07:22,529
+Now description, is something new, but you can say SSH
+
+192
+00:07:22,529 --> 00:07:25,919
+to the instance, and if you don't want know what SSH is,
+
+193
+00:07:25,919 --> 00:07:27,759
+just wait until the next lecture.
+
+194
+00:07:27,759 --> 00:07:31,465
+Now we'll review a Launch it, and we'll get a big warning
+
+195
+00:07:31,465 --> 00:07:34,198
+saying "Your security group is open to the world."
+
+196
+00:07:34,198 --> 00:07:36,939
+So, 0.0.0.0/0 is not best practice,
+
+197
+00:07:36,939 --> 00:07:40,120
+so we get a bit of a warning here, but that's okay,
+
+198
+00:07:40,120 --> 00:07:43,268
+and here we can review all the parameters that we've had.
+
+199
+00:07:43,268 --> 00:07:44,110
+Okay.
+
+200
+00:07:44,110 --> 00:07:45,920
+So, everything looks good, okay.
+
+201
+00:07:45,920 --> 00:07:47,838
+Just make sure you have a t2.micro,
+
+202
+00:07:47,838 --> 00:07:50,840
+and make sure you use Amazon Linux 2, okay,
+
+203
+00:07:50,840 --> 00:07:52,193
+But everything looks fine.
+
+204
+00:07:52,193 --> 00:07:53,451
+So we'll click on Launch.
+
+205
+00:07:53,451 --> 00:07:54,840
+And the last thing we have to do when we click
+
+206
+00:07:54,840 --> 00:07:57,066
+on Launch is to create a key pair.
+
+207
+00:07:57,066 --> 00:07:59,550
+Now, basically a key pair is what's going to give
+
+208
+00:07:59,550 --> 00:08:03,217
+you access to log in to, or to SSH into the,
+
+209
+00:08:04,166 --> 00:08:05,856
+a machine you just launched.
+
+210
+00:08:05,856 --> 00:08:07,847
+And so right now we have no key pair so you can
+
+211
+00:08:07,847 --> 00:08:09,906
+import key pairs if you already have key pairs.
+
+212
+00:08:09,906 --> 00:08:12,155
+But, for this case, we will go and create
+
+213
+00:08:12,155 --> 00:08:13,405
+a new key pair.
+
+214
+00:08:14,336 --> 00:08:19,249
+And for this key pair, I'll call this EC2 tutorial.
+
+215
+00:08:19,249 --> 00:08:21,546
+The next step is for me to download that key pair,
+
+216
+00:08:21,546 --> 00:08:25,181
+and it downloads a EC2T tutorial.pem file,
+
+217
+00:08:25,181 --> 00:08:27,866
+and then I click on launch instances.
+
+218
+00:08:27,866 --> 00:08:29,833
+So that's about right, and then we click
+
+219
+00:08:29,833 --> 00:08:31,596
+on view instances in the bottom right,
+
+220
+00:08:31,596 --> 00:08:34,924
+and we end up with our first instance starting.
+
+221
+00:08:34,924 --> 00:08:37,139
+So as you can see now, our instance is started,
+
+222
+00:08:37,139 --> 00:08:39,926
+we can see the instance type, it's my t2 micro,
+
+223
+00:08:39,926 --> 00:08:42,016
+the availability zone it was launched in,
+
+224
+00:08:42,016 --> 00:08:44,915
+so for me it's eu-west-3c, and the Instance state
+
+225
+00:08:44,915 --> 00:08:46,965
+which is pending so it's being created.
+
+226
+00:08:46,965 --> 00:08:49,499
+Everything looks good, and we'll see how we deal
+
+227
+00:08:49,499 --> 00:08:51,377
+with the IP's in the next lecture.
+
+228
+00:08:51,377 --> 00:08:54,911
+As we can see the tag here, My First Instance was used
+
+229
+00:08:54,911 --> 00:08:57,156
+under the Name column, so basically our Instance
+
+230
+00:08:57,156 --> 00:08:59,243
+was being named , which is great,
+
+231
+00:08:59,243 --> 00:09:01,581
+and so we are good to go.
+
+232
+00:09:01,581 --> 00:09:03,270
+Now one thing I want to show you is that once
+
+233
+00:09:03,270 --> 00:09:06,673
+the Instance is started, we have a green running, okay.
+
+234
+00:09:06,673 --> 00:09:08,399
+And green running means that Instance is started
+
+235
+00:09:08,399 --> 00:09:09,959
+and you can be billed.
+
+236
+00:09:09,959 --> 00:09:12,104
+This is a t2.micro so it's a free tier user
+
+237
+00:09:12,104 --> 00:09:13,942
+so you won't be billed for this Instance,
+
+238
+00:09:13,942 --> 00:09:15,416
+but basically if it was another Instance
+
+239
+00:09:15,416 --> 00:09:17,196
+you start getting billed.
+
+240
+00:09:17,196 --> 00:09:19,969
+If you right click on it, you can stop, reboot,
+
+241
+00:09:19,969 --> 00:09:21,388
+or terminate an Instance.
+
+242
+00:09:21,388 --> 00:09:24,181
+If you stop it, it will just not bill you for it,
+
+243
+00:09:24,181 --> 00:09:25,469
+and the Instance will be stopped.
+
+244
+00:09:25,469 --> 00:09:27,239
+If you reboot it, it's what you expect it to be ,
+
+245
+00:09:27,239 --> 00:09:28,759
+like your computer it will reboot it.
+
+246
+00:09:28,759 --> 00:09:30,671
+And if you terminate it, you basically saying,
+
+247
+00:09:30,671 --> 00:09:32,939
+"I want it no more , don't save the data,
+
+248
+00:09:32,939 --> 00:09:34,319
+just take it away from me,"
+
+249
+00:09:34,319 --> 00:09:36,269
+and basically you won't be able to access
+
+250
+00:09:36,269 --> 00:09:38,129
+your Instance ever again, okay.
+
+251
+00:09:38,129 --> 00:09:40,481
+So this is very very quick.
+
+252
+00:09:40,481 --> 00:09:42,399
+For now, we'll just keep the Instance running
+
+253
+00:09:42,399 --> 00:09:44,089
+because we have to do tutorial with it.
+
+254
+00:09:44,089 --> 00:09:46,067
+So, we'll see you in the next lecture to show
+
+255
+00:09:46,067 --> 00:09:49,019
+you how we can access it, SSH into it from either
+
+256
+00:09:49,019 --> 00:09:50,863
+Linux, MAC, or Windows.
+
+257
+00:09:50,863 --> 00:09:52,721
+So see you in the next lecture.
+

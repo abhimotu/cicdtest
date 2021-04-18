@@ -1,0 +1,552 @@
+1
+00:00:00,300 --> 00:00:01,640
+<v Instructor>Okay so we're getting into</v>
+
+2
+00:00:01,640 --> 00:00:05,393
+first of all the IAM service in AWS.
+
+3
+00:00:05,393 --> 00:00:08,220
+IAM stands for Identity and Access Management,
+
+4
+00:00:08,220 --> 00:00:10,160
+and as you can expect from the name
+
+5
+00:00:10,160 --> 00:00:12,190
+that basically means users.
+
+6
+00:00:12,190 --> 00:00:15,830
+So the whole of your AWS security is going to be in IAM.
+
+7
+00:00:15,830 --> 00:00:18,340
+There's gonna be users, groups and roles.
+
+8
+00:00:18,340 --> 00:00:20,819
+You have to remember this and you surely will remember them
+
+9
+00:00:20,819 --> 00:00:22,330
+by the end of this course.
+
+10
+00:00:22,330 --> 00:00:23,920
+Root account is the account
+
+11
+00:00:23,920 --> 00:00:25,980
+with which you create your AWS accounts.
+
+12
+00:00:25,980 --> 00:00:29,020
+And basically you should only use it the very first time
+
+13
+00:00:29,020 --> 00:00:30,690
+and then you should never use it again
+
+14
+00:00:30,690 --> 00:00:32,410
+or even share it with someone,
+
+15
+00:00:32,410 --> 00:00:34,217
+because your root account is the accounts
+
+16
+00:00:34,217 --> 00:00:36,940
+and the user that has the most power.
+
+17
+00:00:36,940 --> 00:00:39,370
+The users then must be created with proper permissions
+
+18
+00:00:39,370 --> 00:00:41,450
+and we'll see how to do this in the lab.
+
+19
+00:00:41,450 --> 00:00:44,570
+And IAM is going to be at the center of AWS,
+
+20
+00:00:44,570 --> 00:00:48,440
+so every service in AWS is going to be helped
+
+21
+00:00:48,440 --> 00:00:50,340
+with IAM for security.
+
+22
+00:00:50,340 --> 00:00:52,140
+Now we'll have policies within IAM
+
+23
+00:00:52,140 --> 00:00:54,470
+and these policies will be written in JSON.
+
+24
+00:00:54,470 --> 00:00:57,040
+JSON stands for JavaScript Object Notation
+
+25
+00:00:57,040 --> 00:00:59,580
+and they're basically a way to write data.
+
+26
+00:00:59,580 --> 00:01:01,610
+So if you don't know anything about JSON
+
+27
+00:01:01,610 --> 00:01:02,990
+I strongly recommend just going online
+
+28
+00:01:02,990 --> 00:01:05,930
+for a quick tutorial on Google to get started with JSON
+
+29
+00:01:05,930 --> 00:01:07,730
+because they just assume that as a developer
+
+30
+00:01:07,730 --> 00:01:09,860
+you probably know what that is.
+
+31
+00:01:09,860 --> 00:01:13,490
+So how do we visualize IAM at a high level?
+
+32
+00:01:13,490 --> 00:01:16,840
+Well we have the users, and the users is usually going to be
+
+33
+00:01:16,840 --> 00:01:19,130
+a physical person like you or me,
+
+34
+00:01:19,130 --> 00:01:20,380
+we are physical person.
+
+35
+00:01:20,380 --> 00:01:23,050
+So I will get an account in IAM
+
+36
+00:01:23,050 --> 00:01:26,000
+and you surely will get an account in IAM.
+
+37
+00:01:26,000 --> 00:01:28,770
+That account should not be the root account.
+
+38
+00:01:28,770 --> 00:01:31,400
+Now users can be grouped together.
+
+39
+00:01:31,400 --> 00:01:33,860
+And group is whatever you want it to be
+
+40
+00:01:33,860 --> 00:01:36,490
+but usually it's by functions, for example admin,
+
+41
+00:01:36,490 --> 00:01:39,488
+devops or by teams, such as engineering, design
+
+42
+00:01:39,488 --> 00:01:41,370
+or anything you want.
+
+43
+00:01:41,370 --> 00:01:43,480
+Overall group, and you should know this,
+
+44
+00:01:43,480 --> 00:01:45,380
+contain users, okay.
+
+45
+00:01:45,380 --> 00:01:48,630
+So this way you can apply permissions to groups
+
+46
+00:01:48,630 --> 00:01:51,620
+and users will inherit these permissions.
+
+47
+00:01:51,620 --> 00:01:53,360
+Finally we have roles.
+
+48
+00:01:53,360 --> 00:01:56,310
+And roles are only for internal usage
+
+49
+00:01:56,310 --> 00:01:59,640
+within the AWS resources and services, okay.
+
+50
+00:01:59,640 --> 00:02:02,510
+So roles is what we're going to give to machines.
+
+51
+00:02:02,510 --> 00:02:04,820
+So this is a strong distinction to make.
+
+52
+00:02:04,820 --> 00:02:07,400
+Users is going to be for a physical person
+
+53
+00:02:07,400 --> 00:02:10,070
+and roles is going to be for a machine.
+
+54
+00:02:10,070 --> 00:02:13,450
+Now overall as I said, policies are JSON document
+
+55
+00:02:13,450 --> 00:02:16,900
+and they will define what each of these building blocks,
+
+56
+00:02:16,900 --> 00:02:20,470
+users, groups and roles, can and cannot do.
+
+57
+00:02:20,470 --> 00:02:22,800
+We'll learn how to write policies, don't worry
+
+58
+00:02:22,800 --> 00:02:25,020
+and we'll play with all these things at length
+
+59
+00:02:25,020 --> 00:02:26,410
+during this course.
+
+60
+00:02:26,410 --> 00:02:29,120
+Now IAM you should know has a global view.
+
+61
+00:02:29,120 --> 00:02:31,820
+When you create a user or a group or a role
+
+62
+00:02:31,820 --> 00:02:35,790
+in your AWS accounts it will be across all the regions
+
+63
+00:02:35,790 --> 00:02:37,690
+and that kind of makes sense.
+
+64
+00:02:37,690 --> 00:02:40,150
+As I said the policies are in JSON.
+
+65
+00:02:40,150 --> 00:02:42,290
+You can enable Multi Factor Authentication
+
+66
+00:02:42,290 --> 00:02:44,250
+for your root account and for your users,
+
+67
+00:02:44,250 --> 00:02:46,390
+and I strongly recommend it.
+
+68
+00:02:46,390 --> 00:02:48,540
+Now IAM comes with managed policies,
+
+69
+00:02:48,540 --> 00:02:51,860
+so basically you don't need to rewrite the whole policies,
+
+70
+00:02:51,860 --> 00:02:54,940
+you can reuse some that Amazon put together for you
+
+71
+00:02:54,940 --> 00:02:56,640
+for ease of management.
+
+72
+00:02:56,640 --> 00:02:59,360
+And we'll see in depth and length
+
+73
+00:02:59,360 --> 00:03:00,840
+how to create IAM policies.
+
+74
+00:03:00,840 --> 00:03:02,210
+Right now we'll just take it easy
+
+75
+00:03:02,210 --> 00:03:04,370
+and do a soft introduction.
+
+76
+00:03:04,370 --> 00:03:07,860
+Something you'll hear me say over and over and over
+
+77
+00:03:07,860 --> 00:03:09,610
+in this course it that it's best
+
+78
+00:03:09,610 --> 00:03:12,400
+to give users or roles the minimal amount
+
+79
+00:03:12,400 --> 00:03:14,870
+of permissions they need to perform the job,
+
+80
+00:03:14,870 --> 00:03:17,440
+and that's called the least privilege principles.
+
+81
+00:03:17,440 --> 00:03:19,930
+And so you absolutely want to make sure
+
+82
+00:03:19,930 --> 00:03:22,960
+that you don't over power any single person
+
+83
+00:03:22,960 --> 00:03:26,800
+in your organization or any single application or server.
+
+84
+00:03:26,800 --> 00:03:30,640
+And you will hear me say this so many times.
+
+85
+00:03:30,640 --> 00:03:32,810
+Now for big enterprises you use something
+
+86
+00:03:32,810 --> 00:03:34,330
+called IAM Federation.
+
+87
+00:03:34,330 --> 00:03:35,780
+We will not use it in this course
+
+88
+00:03:35,780 --> 00:03:37,780
+'cause we're not a big enterprise we're just users,
+
+89
+00:03:37,780 --> 00:03:40,408
+but basically if a big enterprise has like
+
+90
+00:03:40,408 --> 00:03:44,010
+their own repository of users, such as Active Directory,
+
+91
+00:03:44,010 --> 00:03:46,110
+you know they can integrate this with IAM.
+
+92
+00:03:46,110 --> 00:03:48,480
+And this way the users of a big enterprise
+
+93
+00:03:48,480 --> 00:03:51,720
+can log into AWS using their company credentials.
+
+94
+00:03:51,720 --> 00:03:54,200
+This uses something called the SAML standard
+
+95
+00:03:54,200 --> 00:03:56,770
+and Microsoft Active Directory for example,
+
+96
+00:03:56,770 --> 00:03:59,820
+is one of these big users of the SAML standard.
+
+97
+00:03:59,820 --> 00:04:01,800
+So it's just something you need to know about for the exam
+
+98
+00:04:01,800 --> 00:04:03,570
+but we will not practice this.
+
+99
+00:04:03,570 --> 00:04:05,140
+So just a quick brain dump.
+
+100
+00:04:05,140 --> 00:04:07,200
+And I'm gonna feel like I'm your father right now
+
+101
+00:04:07,200 --> 00:04:08,730
+but I have to say it once,
+
+102
+00:04:08,730 --> 00:04:10,288
+'cause my conscience needs to be clear,
+
+103
+00:04:10,288 --> 00:04:13,500
+one IAM user per physical person.
+
+104
+00:04:13,500 --> 00:04:15,650
+You do not share an IAM user with anyone.
+
+105
+00:04:15,650 --> 00:04:19,180
+Your account is your account and no one else's.
+
+106
+00:04:19,180 --> 00:04:21,770
+One IAM role per application.
+
+107
+00:04:21,770 --> 00:04:23,690
+Each application has it's own lifecycle,
+
+108
+00:04:23,690 --> 00:04:26,500
+their own independence and so you want one IAM role
+
+109
+00:04:26,500 --> 00:04:28,920
+per application, nothing shared.
+
+110
+00:04:28,920 --> 00:04:32,090
+Your IAM credentials should never be shared.
+
+111
+00:04:32,090 --> 00:04:35,010
+Again as I said, your IAM user and your credentials
+
+112
+00:04:35,010 --> 00:04:38,540
+are your own, you never share them with anyone.
+
+113
+00:04:38,540 --> 00:04:41,030
+Now never, ever, ever, ever,
+
+114
+00:04:41,030 --> 00:04:42,500
+I think I said it that many times,
+
+115
+00:04:42,500 --> 00:04:46,050
+write IAM credentials in code, ever.
+
+116
+00:04:46,050 --> 00:04:49,280
+This is extremely bad if you put your credentials in code
+
+117
+00:04:49,280 --> 00:04:52,070
+'cause if that code ends up in someone's hands
+
+118
+00:04:52,070 --> 00:04:54,350
+or on Github or on the Cloud or whatever
+
+119
+00:04:54,350 --> 00:04:56,830
+and someone intercepts them, I promise you someone
+
+120
+00:04:56,830 --> 00:04:58,310
+will mine bitcoin in your account
+
+121
+00:04:58,310 --> 00:05:02,170
+and you'll end up with a $20,000 bill in one day.
+
+122
+00:05:02,170 --> 00:05:04,550
+And that happened for real, you can Google it okay.
+
+123
+00:05:04,550 --> 00:05:08,700
+So never, ever, ever write IAM credentials in code, ever.
+
+124
+00:05:08,700 --> 00:05:11,000
+Never use your root account except for initial setup.
+
+125
+00:05:11,000 --> 00:05:13,310
+That's super important because the root account
+
+126
+00:05:13,310 --> 00:05:14,810
+is kind of the key to the kingdom.
+
+127
+00:05:14,810 --> 00:05:17,410
+If you lose it or if you compromise it, you're done.
+
+128
+00:05:17,410 --> 00:05:19,320
+So your root account is something you should create
+
+129
+00:05:19,320 --> 00:05:22,640
+at once and then lock in a safe and never use ever again.
+
+130
+00:05:22,640 --> 00:05:26,250
+So as I said never use the root IAM credentials.
+
+131
+00:05:26,250 --> 00:05:28,410
+Now I sound like someone who's trying to scare you
+
+132
+00:05:28,410 --> 00:05:29,960
+and I am and it's true.
+
+133
+00:05:29,960 --> 00:05:32,590
+Your AWS account can do a lot of things, okay
+
+134
+00:05:32,590 --> 00:05:34,520
+and can cost a lot of money if you misuse it
+
+135
+00:05:34,520 --> 00:05:36,360
+or someone misuses it for you,
+
+136
+00:05:36,360 --> 00:05:40,280
+so be careful around credentials and how you deal with them.
+
+137
+00:05:40,280 --> 00:05:42,200
+Apart from that, let's go in the next lecture
+
+138
+00:05:42,200 --> 00:05:43,603
+for the labs and hands on.
+
