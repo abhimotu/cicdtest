@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 Hello guys, i m on to master,
 now will amend while commiting
+=======
+Hello guys, i m on to master
+>>>>>>> 3d882f5cfca3d35e29238839a76c569f4bd81bd7
