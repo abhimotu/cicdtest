@@ -1,0 +1,832 @@
+1
+00:00:00,000 --> 00:00:01,040
+<v Narrator>Let's first start with our</v>
+
+2
+00:00:01,040 --> 00:00:02,440
+Classic Load Balancers
+
+3
+00:00:02,440 --> 00:00:04,710
+and these may not be as prominent in the exam
+
+4
+00:00:04,710 --> 00:00:06,100
+but they may still be mentioned
+
+5
+00:00:06,100 --> 00:00:08,720
+and they're still very valid load balancers.
+
+6
+00:00:08,720 --> 00:00:10,800
+So they support two things,
+
+7
+00:00:10,800 --> 00:00:13,360
+the TCP or traffic or
+
+8
+00:00:13,360 --> 00:00:14,663
+HTTP and HTTPS.
+
+9
+00:00:15,610 --> 00:00:18,317
+And TCP is called layer four
+
+10
+00:00:18,317 --> 00:00:20,700
+and HTTP and HTTPS is called layer seven.
+
+11
+00:00:20,700 --> 00:00:22,530
+I'm not gonna get too deep about what these layers
+
+12
+00:00:22,530 --> 00:00:24,370
+mean but just know that TCP is layer four
+
+13
+00:00:24,370 --> 00:00:26,350
+and the other two are layer seven.
+
+14
+00:00:26,350 --> 00:00:29,240
+So the health checks are either TCP based
+
+15
+00:00:29,240 --> 00:00:31,870
+or HTTP based and what you will get
+
+16
+00:00:31,870 --> 00:00:34,220
+out of a load balancer or classic load balancer
+
+17
+00:00:34,220 --> 00:00:36,190
+is a fixed hostname and we'll see this
+
+18
+00:00:36,190 --> 00:00:37,470
+in the hands-on as well.
+
+19
+00:00:37,470 --> 00:00:40,290
+So what we'll set up in this lecture is a client
+
+20
+00:00:40,290 --> 00:00:42,610
+talking to our classic load balancer
+
+21
+00:00:42,610 --> 00:00:44,580
+on an HTTP listener.
+
+22
+00:00:44,580 --> 00:00:48,210
+And internally that CLB will be redirecting
+
+23
+00:00:48,210 --> 00:00:50,770
+the traffic into our EC2 instances.
+
+24
+00:00:50,770 --> 00:00:53,400
+So let's have a look at how we can do this in the console.
+
+25
+00:00:53,400 --> 00:00:55,860
+We have my second instance that's already created
+
+26
+00:00:55,860 --> 00:00:57,710
+and running our HTTP server.
+
+27
+00:00:57,710 --> 00:01:00,670
+And so if you go to this IP and press enter we get back the
+
+28
+00:01:00,670 --> 00:01:03,300
+Hello World from our instance so this is correct.
+
+29
+00:01:03,300 --> 00:01:06,310
+Now let's go ahead and create our classic load balancer.
+
+30
+00:01:06,310 --> 00:01:08,320
+So for this I'm going to scroll down
+
+31
+00:01:08,320 --> 00:01:10,790
+and go to load balancers.
+
+32
+00:01:10,790 --> 00:01:13,790
+And I'm going to go ahead and create a load balancer.
+
+33
+00:01:13,790 --> 00:01:16,070
+So we have three choices and we're going to choose
+
+34
+00:01:16,070 --> 00:01:17,940
+classic load balancer which is the previous generation
+
+35
+00:01:17,940 --> 00:01:20,290
+but don't worry we will get to application load balancer
+
+36
+00:01:20,290 --> 00:01:22,320
+and network load balancers which you can see
+
+37
+00:01:22,320 --> 00:01:24,350
+from this screen AWS is kind of pushing for
+
+38
+00:01:24,350 --> 00:01:28,670
+us to use the ALB and the NLB more than this CLB.
+
+39
+00:01:28,670 --> 00:01:29,503
+Okay?
+
+40
+00:01:29,503 --> 00:01:33,270
+But for this exercise we'll just use classic load balancer.
+
+41
+00:01:33,270 --> 00:01:36,180
+Click on create and then we have to give it a name
+
+42
+00:01:36,180 --> 00:01:41,180
+so my first CLB and then we need to choose the VPC
+
+43
+00:01:41,980 --> 00:01:43,880
+so I'll choose my default VPC.
+
+44
+00:01:43,880 --> 00:01:46,480
+Is it an internal balancer or external one?
+
+45
+00:01:46,480 --> 00:01:48,050
+If it's internal we're not going
+
+46
+00:01:48,050 --> 00:01:49,560
+to be able to publicly access it
+
+47
+00:01:49,560 --> 00:01:51,500
+so we'll leave this un-ticked.
+
+48
+00:01:51,500 --> 00:01:53,670
+And do we want advanced VPC configuration?
+
+49
+00:01:53,670 --> 00:01:55,690
+For now we will not tick this box.
+
+50
+00:01:55,690 --> 00:01:58,470
+The listener configuration is saying what is our CLB
+
+51
+00:01:58,470 --> 00:01:59,910
+going to be listened onto?
+
+52
+00:01:59,910 --> 00:02:03,780
+So it's going to have the port 80 which is HTTP
+
+53
+00:02:03,780 --> 00:02:05,550
+and it will be back-talking to our
+
+54
+00:02:05,550 --> 00:02:09,160
+instance on port 80 on HTTP.
+
+55
+00:02:09,160 --> 00:02:11,270
+So this looks good, this is classic.
+
+56
+00:02:11,270 --> 00:02:13,080
+And I'm going to assign security group.
+
+57
+00:02:13,080 --> 00:02:16,070
+Here I'm going to create a new security group,
+
+58
+00:02:16,070 --> 00:02:21,070
+and I'm going to call it my first load balancer
+
+59
+00:02:22,140 --> 00:02:27,140
+and it will be my first load balancer security group, okay?
+
+60
+00:02:28,750 --> 00:02:32,850
+Now what it will allow is to allow anyone on port 80
+
+61
+00:02:32,850 --> 00:02:35,210
+from anywhere to access our load balancer
+
+62
+00:02:35,210 --> 00:02:37,440
+which is what we need because we want to access our
+
+63
+00:02:37,440 --> 00:02:39,380
+newly created load balancer.
+
+64
+00:02:39,380 --> 00:02:42,080
+Then for security settings there is nothing on HTTPS
+
+65
+00:02:42,080 --> 00:02:44,100
+so we get this warning but this is fine.
+
+66
+00:02:44,100 --> 00:02:45,300
+Then for health checks, we need to
+
+67
+00:02:45,300 --> 00:02:47,380
+set up a health check for our instance.
+
+68
+00:02:47,380 --> 00:02:50,080
+So it's saying okay you need to use the HTTP
+
+69
+00:02:50,080 --> 00:02:52,820
+protocol on port 80 and then need to
+
+70
+00:02:52,820 --> 00:02:54,570
+ping on this specific path.
+
+71
+00:02:54,570 --> 00:02:58,200
+And if I leave this as /.index.HTML will this work?
+
+72
+00:02:58,200 --> 00:03:02,250
+Let's add /.index.HTML and press enter.
+
+73
+00:03:02,250 --> 00:03:04,440
+As you can see this still works so we can keep
+
+74
+00:03:04,440 --> 00:03:06,170
+this ping path as is.
+
+75
+00:03:06,170 --> 00:03:08,280
+But if we wanted to we can also just
+
+76
+00:03:08,280 --> 00:03:11,840
+not have index.HTML and remove that part.
+
+77
+00:03:11,840 --> 00:03:13,940
+That's all up to you, it's the exact same thing
+
+78
+00:03:13,940 --> 00:03:15,270
+in this example.
+
+79
+00:03:15,270 --> 00:03:16,740
+Now for the advanced details,
+
+80
+00:03:16,740 --> 00:03:19,980
+how long are we waiting for a response?
+
+81
+00:03:19,980 --> 00:03:22,500
+How often do we want to talk to our instance?
+
+82
+00:03:22,500 --> 00:03:25,242
+Maybe you want to talk to it every five seconds.
+
+83
+00:03:25,242 --> 00:03:27,880
+After how many failed health checks is
+
+84
+00:03:27,880 --> 00:03:29,250
+my instance going to be unhealthy?
+
+85
+00:03:29,250 --> 00:03:30,650
+We'll set it as two.
+
+86
+00:03:30,650 --> 00:03:33,340
+And after how many successful health checks is it healthy?
+
+87
+00:03:33,340 --> 00:03:35,000
+We'll set it as five.
+
+88
+00:03:35,000 --> 00:03:38,274
+Click on add EC2 instances and here we're about
+
+89
+00:03:38,274 --> 00:03:39,530
+to add our second instance directly
+
+90
+00:03:39,530 --> 00:03:41,830
+into our classic load balancer.
+
+91
+00:03:41,830 --> 00:03:43,123
+And click on add tags.
+
+92
+00:03:44,244 --> 00:03:46,640
+And click on review and create and create.
+
+93
+00:03:46,640 --> 00:03:49,060
+Now the load balancer is being created
+
+94
+00:03:49,060 --> 00:03:51,170
+and we need to review and resolve this.
+
+95
+00:03:51,170 --> 00:03:53,590
+Obviously the health check is no good so
+
+96
+00:03:53,590 --> 00:03:56,990
+we need to have a interval of maybe ten seconds
+
+97
+00:03:56,990 --> 00:03:59,810
+so that it is greater than the response time out obviously.
+
+98
+00:03:59,810 --> 00:04:03,330
+So I'll just fix that real quick and go again.
+
+99
+00:04:03,330 --> 00:04:05,850
+And click on create and now everything should be working.
+
+100
+00:04:05,850 --> 00:04:09,390
+Okay, so our CLB is now being created and we
+
+101
+00:04:09,390 --> 00:04:10,630
+have to wait for it to be provisioned
+
+102
+00:04:10,630 --> 00:04:13,655
+so as you can see now it is being provisioned.
+
+103
+00:04:13,655 --> 00:04:16,280
+Our classic load balancer is now created and if you
+
+104
+00:04:16,280 --> 00:04:19,750
+go to instances one of them is in service.
+
+105
+00:04:19,750 --> 00:04:21,530
+It took it a while to get in service but now it's
+
+106
+00:04:21,530 --> 00:04:24,000
+in service, that means that it's passing the health checks.
+
+107
+00:04:24,000 --> 00:04:26,430
+And therefore my load balancer is ready.
+
+108
+00:04:26,430 --> 00:04:28,960
+So if I use this DNS name right here,
+
+109
+00:04:28,960 --> 00:04:32,640
+copy this entire DNS name, open a new tab and add it.
+
+110
+00:04:32,640 --> 00:04:34,660
+As we can see using this DNS name,
+
+111
+00:04:34,660 --> 00:04:38,010
+we get the Hello World from the same IP as before.
+
+112
+00:04:38,010 --> 00:04:40,580
+So if I go back to my EC2 instance and refresh this page
+
+113
+00:04:40,580 --> 00:04:43,520
+I get the exact same message so this CLB is working
+
+114
+00:04:43,520 --> 00:04:45,720
+because it is responding the exact same way
+
+115
+00:04:45,720 --> 00:04:47,410
+as my EC2 instance because it's actually
+
+116
+00:04:47,410 --> 00:04:52,140
+my EC2 instance responding behind my load balancer, okay?
+
+117
+00:04:52,140 --> 00:04:55,230
+The thing is now we have a load balancer and it's
+
+118
+00:04:55,230 --> 00:04:58,350
+in front of our instance and we're able to access
+
+119
+00:04:58,350 --> 00:05:02,020
+both our instance and our load balancer at the same time.
+
+120
+00:05:02,020 --> 00:05:03,120
+So this is kind of problematic,
+
+121
+00:05:03,120 --> 00:05:05,940
+we want to be able to only access our load balancer
+
+122
+00:05:05,940 --> 00:05:09,930
+to expose that and not expose our EC2 instances directly.
+
+123
+00:05:09,930 --> 00:05:12,150
+So for this we need to go back to security groups
+
+124
+00:05:12,150 --> 00:05:14,120
+and do a little bit of changes.
+
+125
+00:05:14,120 --> 00:05:16,010
+So let's go to security groups
+
+126
+00:05:16,010 --> 00:05:18,430
+and here we have my first load balancer security group
+
+127
+00:05:18,430 --> 00:05:19,570
+and my first security group
+
+128
+00:05:19,570 --> 00:05:21,880
+which was attached to our EC2 instance.
+
+129
+00:05:21,880 --> 00:05:24,680
+So I'm going to click on my first load balancer,
+
+130
+00:05:24,680 --> 00:05:26,650
+inbound, and this looks good.
+
+131
+00:05:26,650 --> 00:05:28,940
+We're saying that any traffic on HTTP
+
+132
+00:05:28,940 --> 00:05:31,860
+on port 80 can access our load balancer.
+
+133
+00:05:31,860 --> 00:05:34,890
+But if we got to my security group this is too open,
+
+134
+00:05:34,890 --> 00:05:37,613
+we're saying anyone, anywhere can access HTTP.
+
+135
+00:05:37,613 --> 00:05:39,840
+But what we want to do is change this
+
+136
+00:05:39,840 --> 00:05:42,540
+and say not anyone from anywhere
+
+137
+00:05:42,540 --> 00:05:44,630
+but someone from, and you type sg,
+
+138
+00:05:44,630 --> 00:05:47,560
+someone from my first load balancer only
+
+139
+00:05:47,560 --> 00:05:49,920
+can access my EC2 instance.
+
+140
+00:05:49,920 --> 00:05:52,610
+And so instead of saying allow HTTP traffic
+
+141
+00:05:52,610 --> 00:05:57,330
+from anywhere we can say from my load balancer only.
+
+142
+00:05:59,110 --> 00:06:01,990
+And so once this is done and we save this,
+
+143
+00:06:01,990 --> 00:06:03,390
+now we're saying okay
+
+144
+00:06:03,390 --> 00:06:05,800
+just traffic that is coming from my load balancer
+
+145
+00:06:05,800 --> 00:06:08,190
+can go into my EC2 instances.
+
+146
+00:06:08,190 --> 00:06:11,210
+So if I go back to my CLB, and refresh,
+
+147
+00:06:11,210 --> 00:06:12,380
+as you can see this still works.
+
+148
+00:06:12,380 --> 00:06:14,250
+I still get the response Hello World,
+
+149
+00:06:14,250 --> 00:06:17,960
+but now if I go to this and press on refresh,
+
+150
+00:06:17,960 --> 00:06:20,670
+you can see here on the top of my screen this is spinning.
+
+151
+00:06:20,670 --> 00:06:23,480
+And so this looks like a time out and as you remember,
+
+152
+00:06:23,480 --> 00:06:24,990
+whenever there is a timeout issue
+
+153
+00:06:24,990 --> 00:06:27,110
+that means that this is a security group working
+
+154
+00:06:27,110 --> 00:06:29,420
+and not providing access to our instance.
+
+155
+00:06:29,420 --> 00:06:30,830
+So that our EC2 instance right now
+
+156
+00:06:30,830 --> 00:06:32,140
+is not accessible directly,
+
+157
+00:06:32,140 --> 00:06:35,980
+it can only be accessed through our CLB and it
+
+158
+00:06:35,980 --> 00:06:39,060
+will time out if we try to access the IP directly.
+
+159
+00:06:39,060 --> 00:06:42,970
+So here we have set up a much better security mechanism,
+
+160
+00:06:42,970 --> 00:06:45,893
+because the only entry point into our EC2 instances
+
+161
+00:06:45,893 --> 00:06:48,820
+is through our load balancer.
+
+162
+00:06:48,820 --> 00:06:50,050
+So this is quite cool.
+
+163
+00:06:50,050 --> 00:06:53,110
+And something we can do now is add more instances.
+
+164
+00:06:53,110 --> 00:06:55,830
+So if we go back to our instances right here
+
+165
+00:06:55,830 --> 00:06:59,830
+and I right click, and I do launch more like this,
+
+166
+00:06:59,830 --> 00:07:03,090
+and I can look at the instance details
+
+167
+00:07:03,090 --> 00:07:05,450
+and there is some user data so this is perfect.
+
+168
+00:07:05,450 --> 00:07:07,720
+It's going to reuse the same user data.
+
+169
+00:07:07,720 --> 00:07:10,850
+We say okay, we're going to launch one of them.
+
+170
+00:07:10,850 --> 00:07:14,720
+And we have one more and maybe we should launch another one.
+
+171
+00:07:14,720 --> 00:07:18,700
+So I'll actually launch this instance again.
+
+172
+00:07:18,700 --> 00:07:21,370
+Right click, launch more like this.
+
+173
+00:07:21,370 --> 00:07:25,440
+And then I will actually edit my instance detail this time.
+
+174
+00:07:25,440 --> 00:07:26,770
+Just to review it so,
+
+175
+00:07:26,770 --> 00:07:30,120
+let's click on previous, previous, previous
+
+176
+00:07:30,120 --> 00:07:32,140
+and what I want to change is the availability zone
+
+177
+00:07:32,140 --> 00:07:34,730
+so right now it's going into EU west 3C
+
+178
+00:07:34,730 --> 00:07:38,380
+but I want to launch it in a different one, 3A for example.
+
+179
+00:07:38,380 --> 00:07:40,853
+And go back and review and launch.
+
+180
+00:07:41,810 --> 00:07:43,390
+Okay, everything looks good.
+
+181
+00:07:43,390 --> 00:07:47,150
+So now our three instances are being launched right here.
+
+182
+00:07:47,150 --> 00:07:51,530
+And what I have to do is go to my load balancer,
+
+183
+00:07:51,530 --> 00:07:53,570
+which is on the left-hand side.
+
+184
+00:07:53,570 --> 00:07:56,280
+And here I need to edit my instances.
+
+185
+00:07:56,280 --> 00:07:58,660
+And I'm going to add these two instances right here
+
+186
+00:07:58,660 --> 00:08:01,960
+so up, they're all going to be added, and click on save.
+
+187
+00:08:01,960 --> 00:08:03,450
+And now we have three instances
+
+188
+00:08:03,450 --> 00:08:05,200
+attached to our load balancer.
+
+189
+00:08:05,200 --> 00:08:06,380
+Two of them are out of service
+
+190
+00:08:06,380 --> 00:08:07,290
+because they are still launching
+
+191
+00:08:07,290 --> 00:08:08,520
+so let me wait a little bit
+
+192
+00:08:08,520 --> 00:08:10,480
+until they have checked passes.
+
+193
+00:08:10,480 --> 00:08:12,814
+So now our three instances are in service.
+
+194
+00:08:12,814 --> 00:08:17,814
+We have two in EU west 3C and one in EU west 3A
+
+195
+00:08:18,690 --> 00:08:22,660
+and so if I go to my load balancer and refresh this page,
+
+196
+00:08:22,660 --> 00:08:25,630
+I should be seeing the IP changing every single time.
+
+197
+00:08:25,630 --> 00:08:27,941
+So as you can see because the IP changes every single time
+
+198
+00:08:27,941 --> 00:08:30,710
+that means that our load balancer is actually getting
+
+199
+00:08:30,710 --> 00:08:34,850
+responses from our three EC2 instances one at a time.
+
+200
+00:08:34,850 --> 00:08:37,410
+And so this is really cool because right now we are showing
+
+201
+00:08:37,410 --> 00:08:39,840
+what it's like to do load balancing okay?
+
+202
+00:08:39,840 --> 00:08:41,010
+Whoa that's awesome.
+
+203
+00:08:41,010 --> 00:08:43,100
+All right so that's it for this lecture.
+
+204
+00:08:43,100 --> 00:08:45,700
+I will not be using this CLB in the future
+
+205
+00:08:45,700 --> 00:08:48,400
+so what you can do is right click and then delete.
+
+206
+00:08:48,400 --> 00:08:50,170
+And then we'll be done with this CLB.
+
+207
+00:08:50,170 --> 00:08:53,220
+But we'll keep our EC2 instances for the next hands-on,
+
+208
+00:08:53,220 --> 00:08:55,123
+so I will see you in the next lecture.
+
