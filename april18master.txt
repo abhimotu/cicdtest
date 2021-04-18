@@ -8,3 +8,5 @@ Hello guys, i m on to master
 
 
 This is a new and latest commit
+
+this is last commit before sqash and maegre
