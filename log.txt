@@ -1,0 +1,110 @@
+commit 4521b2574b2bd6854af79bfd7d48074084af1ff6
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Sun Apr 18 09:09:05 2021 +0530
+
+    testing commit for merge3
+
+commit 65e5bf4ce48757909832fcd8ff8dff9d83a2d6aa
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Sun Apr 18 09:08:45 2021 +0530
+
+    testing commit for merge2
+
+commit d60e7c13a22e6d525cf61d26ed8b85bb96f83d6d
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Sun Apr 18 09:08:21 2021 +0530
+
+    testing commit for merge1
+
+commit 0f16b38269329708379d3d2f523ebeb4cadff1f6
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Sun Apr 18 09:07:38 2021 +0530
+
+    testing commit for merge
+
+commit 6f207d4a8787fae2d8c7d0076934117013497370
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Sun Apr 18 08:16:56 2021 +0530
+
+    testing april18txt
+
+commit 208ac7eea92417b35b3ec90c700ace0985eb5e53
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Tue Apr 13 15:47:29 2021 +0530
+
+    for development
+
+commit c49eb27e358b301eca5cecbca42dce06b04ec7d1
+Merge: e3ecfc7 5b82dd2
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Tue Apr 13 15:35:23 2021 +0530
+
+    Merge branch 'master' of https://github.com/abhimotu/cicdtest into feature/stage
+
+commit e3ecfc70a2c04f6f7e98e4e17a3ce8388fd03de0
+Author: abhimotu <73917744+abhimotu@users.noreply.github.com>
+Date:   Tue Apr 13 15:29:35 2021 +0530
+
+    pulltesting
+
+commit 5b82dd2b36b135023a4a415a7b123d08932353a6
+Author: abhimotu <73917744+abhimotu@users.noreply.github.com>
+Date:   Tue Apr 13 15:06:53 2021 +0530
+
+    Feature/stage (#2)
+    
+    * stage branch commit
+    
+    * new commit for testing on feature/stage branch
+    
+    * latest commit for docker file for testing on feature/stage branch
+    
+    Co-authored-by: abhishek_kubetest <abhishek@example.com>
+
+commit 6dc00449f4208d97ac02b9b79567fb01b3aba324
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Tue Apr 13 14:58:08 2021 +0530
+
+    latest commit for docker file for testing on feature/stage branch
+
+commit 94b48fc416445282064c3d076a338204b40c230e
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Tue Apr 13 14:46:32 2021 +0530
+
+    new commit for testing on feature/stage branch
+
+commit c8ececb2ede469d6bf6f2e4e711bb106e561a293
+Author: abhishek_kubetest <abhishek@example.com>
+Date:   Tue Apr 13 14:36:34 2021 +0530
+
+    stage branch commit
+
+commit 6a70602c7609eae80f478079f68311495b3c523d
+Author: Bryant Son <kaita.contact@gmail.com>
+Date:   Sun Aug 18 10:22:11 2019 -0500
+
+    TEST
+
+commit afd9ffce5b45bad20ccb71bb3ed376b3a3d54626
+Author: Bryant Son <kaita.contact@gmail.com>
+Date:   Wed Jul 10 13:42:44 2019 -0500
+
+    ADDING environment variable
+
+commit 1b60c223aa9857e727bc1ffaa5195e42ec6b9a72
+Author: Bryant Son <kaita.contact@gmail.com>
+Date:   Wed Jul 10 13:39:48 2019 -0500
+
+    ADDING environment variable
+
+commit 2838dea078b672114a1bf6ee8fea926c9b27952a
+Author: Bryant Son <kaita.contact@gmail.com>
+Date:   Wed Jul 10 13:19:41 2019 -0500
+
+    Fixed a typo with Jenkins file
+
+commit 3558dc906687dd79bf38ae98e1c1bddfb338cea1
+Author: Bryant Son <kaita.contact@gmail.com>
+Date:   Wed Jul 10 10:12:31 2019 -0500
+
+    Jenkins file
